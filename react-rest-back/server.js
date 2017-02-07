@@ -1,22 +1,25 @@
 let express = require('express');
 let app = express();
-let https = require('https');
-let unirest = require('unirest');
-let ingredients = 'rice%2Cchicken%2Ccabbage%2Cradish%2Ceggs';
+const http = require('http');
 
-let result; 
+
+
 
 app.get('/recipes',(req,response) =>{
-    unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=" + ingredients + "&limitLicense=false&number=5&ranking=1")
-    .header("X-Mashape-Key", "SUacssKijWmsh8CvaZd8knrnNR0up1NrLi4jsnqjqDwmkNi46m")
-    .header("Accept", "application/json")
-    .end(function (res) {
-      let results = res.body;
-      response.send(results)
-      
+  http.get("http://api.yummly.com/v1/api/recipes?_app_id=1abc20d0&_app_key=1ff19cc3a553063941f5e4f530e42f74&q=onion+soup", (res) =>{
+    let body = "";
+    res.on('data', (chunk) =>{
+      body += chunk;
+    });
+    res.on('end',()=>{
+      var parsed = JSON.parse(body);
+      response.send(parsed);
+
     
-      
-    })
+    });
+ 
+
+  });
 })
 
 
@@ -27,18 +30,7 @@ app.get('/recipes',(req,response) =>{
 
 // These code snippets use an open-source library. http://unirest.io/nodejs
 
-function getRecipe() {
-  unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=" + ingredients + "&limitLicense=false&number=5&ranking=1")
-    .header("X-Mashape-Key", "SUacssKijWmsh8CvaZd8knrnNR0up1NrLi4jsnqjqDwmkNi46m")
-    .header("Accept", "application/json")
-    .end(function (res) {
-      let results = res.body;
-      console.log(results);
-      
-    
-      
-    })
-};
+
 function getRecipeTitle(array) {
         for (let i = 0; i < array.length; i++) {
           let recipeTitle = array[i].title;
@@ -50,24 +42,6 @@ function getRecipeTitle(array) {
 
 
 
-let unirest = require('unirest');
-
-let ingredients = 'rice%2Cchicken%2Ccabbage%2Cradish%2Ceggs';
-
-// These code snippets use an open-source library. http://unirest.io/nodejs
-
-	
-
-app.get('/recipes',(req, response) =>{
-	unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?fillIngredients=false&ingredients=apples%2Cflour%2Csugar&limitLicense=false&number=5&ranking=1")
-    .header("X-Mashape-Key", "SUacssKijWmsh8CvaZd8knrnNR0up1NrLi4jsnqjqDwmkNi46m")
-    .header("Accept", "application/json")
-    .end(function (result) {
-      let recipeResults = result.body;
-      response.send(result.body)
-    });
-	
-})
 
 
 app.listen(8000, () => {
