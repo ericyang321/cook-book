@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="App.css">
+
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -27,132 +29,10 @@
       To begin the development, run `npm start`.
       To create a production bundle, use `npm run build`.
     -->
-    <style type="text/css">
-      .group {
-        position:relative;
-        margin:45px;
-        font-family: Arial, Helvetica
-      }
-
-      input{
-        font-size:18px;
-        padding:10px 10px 10px 5px;
-        display:inline-block;
-        width:300px;
-        border:none;
-        border-bottom:1px solid white;
-      }
-      input:focus { outline:none; }
-
-      label{
-        color:#999;
-        font-size:18px;
-        font-weight:normal;
-        position:absolute;
-        pointer-events:none;
-        left:5px;
-        top:10px;
-        transition:0.2s ease all;
-        -moz-transition:0.2s ease all;
-        -webkit-transition:0.2s ease all;
-      }
-
-      input:focus ~ label, input:valid ~ label    {
-        top:-20px;
-        font-size:14px;
-        color:#5264AE;
-      }
-
-      .bar{
-        position:relative; display:block; width:300px;
-      }
-
-      .bar:before, .bar:after{
-        content:'';
-        height:2px;
-        width:0;
-        bottom:1px;
-        position:absolute;
-        background:#5264AE;
-        transition:0.2s ease all;
-        -moz-transition:0.2s ease all;
-        -webkit-transition:0.2s ease all;
-      }
-
-      .bar:before {
-        left:50%;
-      }
-
-      .bar:after {
-        right:50%;
-      }
-
-      input:focus ~ .bar:before, input:focus ~ .bar:after {
-        width:50%;
-      }
-
-      .highlight {
-        position:absolute;
-        height:0%;
-        width:100px;
-        top:25%;
-        left:0;
-        pointer-events:none;
-        opacity:0.5;
-      }
-
-      input:focus ~ .highlight {
-        -webkit-animation:inputHighlighter 0.3s ease;
-        -moz-animation:inputHighlighter 0.3s ease;
-        animation:inputHighlighter 0.3s ease;
-      }
-
-      @-webkit-keyframes inputHighlighter {
-        from { background:#5264AE; }
-        to  { width:0; background:transparent; }
-      }
-      @-moz-keyframes inputHighlighter {
-        from { background:#5264AE; }
-        to  { width:0; background:transparent; }
-      }
-      @keyframes inputHighlighter {
-        from { background:#5264AE; }
-        to  { width:0; background:transparent; }
-      }
-
-      .btn {
-        position: relative;
-        display: inline;
-        padding: 0;
-        border-width: 0;
-        outline: none;
-        background-color: #D3D3D3;
-        color: black;
-        transition: background-color .3s;
-      }
-
-      .btn:hover, .btn:focus {
-        background-color: #5264AE;
-        color: white;
-      }
-
-      .btn span {
-        position: relative;
-        display: block;
-        padding: 12px 24px;
-      }
-    </style>
 
 
-  <form>
-    <div class="group">
-      <input type="text" required>
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Search</label>
-      <button type="submit" class="btn"><span>Submit</span></button>
-    </div>
-  </form>
+
+
 
   </body>
 </html>

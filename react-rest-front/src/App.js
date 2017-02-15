@@ -45,10 +45,15 @@ class App extends React.Component {
 class Home extends React.Component {
     render() {
         return (
-            <div>
-                <h1>Home</h1>
-                <p>This is the homepage</p>
+          <form>
+            <div className="group">
+              <input type="text" required></input>
+              <span className="highlight"></span>
+              <span className="bar"></span>
+              <label>Search</label>
+              <button type="submit" className="btn"><span>Submit</span></button>
             </div>
+          </form>
         )
     }
 };
