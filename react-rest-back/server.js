@@ -28,6 +28,7 @@ app.get('/recipes',(req,response) =>{
 
 
 
+
 // These code snippets use an open-source library. http://unirest.io/nodejs
 
 
@@ -40,6 +41,13 @@ function getRecipeTitle(array) {
 
 // getRecipe();
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.use(bodyParser.json()) //whenever you receive info in the body of post request, it parses and stores it in the body property of your request
 
 
 

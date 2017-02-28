@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+let axios = require('axios');
 
 class App extends React.Component {
   constructor() {
@@ -43,19 +44,35 @@ class App extends React.Component {
 }
 
 class Home extends React.Component {
-    render() {
-        return (
-          <form>
-            <div className="group">
-              <input type="text" required></input>
-              <span className="highlight"></span>
-              <span className="bar"></span>
-              <label>Search</label>
-              <button type="submit" className="btn"><span>Submit</span></button>
-            </div>
-          </form>
-        )
-    }
+  constructor() {
+    super();
+    this.state = {value: ''};
+
+    this.submit_button = this.submit_button.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event){
+    this.setState({value: event.target.value});
+    console.log(event.target.value);
+  }
+  submit_button(){
+    let inputData = {value: this.state.value}
+    axios.post('http://localhost:8000/recipes', inputData)
+    console.log(inputData);
+  }
+  render() {
+      return (
+        <form>
+          <div className="group">
+            <input type="text" required value={this.state.value} onChange={this.handleChange}></input>
+            <span className="highlight"></span>
+            <span className="bar"></span>
+            <label>Search</label>
+            <button type="submit" className="btn" onClick={this.submit_button}><span>Submit</span></button>
+          </div>
+        </form>
+      )
+  }
 };
 
 class About extends React.Component {
