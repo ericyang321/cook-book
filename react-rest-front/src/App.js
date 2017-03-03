@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-<<<<<<< HEAD
 import About from './About';
 import Search from './Search';
 let axios = require('axios');
