@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
+
   constructor() {
     super();
     // this.state.page is what will be used to track which page to render
@@ -13,16 +14,19 @@ class App extends React.Component {
     this.goToHome = this.goToHome.bind(this);
     this.goToAbout = this.goToAbout.bind(this);
   }
+
   goToHome() {
     this.setState({
       page: 'HOME'
     })
   }
+
   goToAbout() {
     this.setState({
       page: 'ABOUT'
     })
   }
+
   render() {
     let content
     if (this.state.page === 'HOME') {
