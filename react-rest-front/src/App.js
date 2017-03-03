@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+<<<<<<< HEAD
 import About from './About';
 import Search from './Search';
 let axios = require('axios');
@@ -70,6 +71,7 @@ class Home extends React.Component {
   render() {
       return (
         <Search ingredientsInput={this.ingredientsInput} submit_button={this.submit_button} value={this.state.value}/>
+
       )
   }
 };
