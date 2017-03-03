@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import About from './About';
+import Search from './Search';
 let axios = require('axios');
 
 class App extends React.Component {
@@ -46,44 +47,32 @@ class App extends React.Component {
 class Home extends React.Component {
   constructor() {
     super();
-    this.state = {value: ''};
+    this.state = {value: "",
+                  ingredients:[]};
 
     this.submit_button = this.submit_button.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.ingredientsInput = this.ingredientsInput.bind(this);
   }
-  handleChange(event){
+  ingredientsInput(event){
     this.setState({value: event.target.value});
     console.log(event.target.value);
   }
   submit_button(){
-    let inputData = {value: this.state.value}
-    axios.post('http://localhost:8000/recipes', inputData)
+    let inputData = {value: this.state.value};
+    let __ingredients = this.state.ingredients;
+    __ingredients.push(inputData);
+    this.setState({ingredients:__ingredients},()=>{
+    axios.post('http://localhost:8000/result', __ingredients)
+    });
+    
     console.log(inputData);
   }
   render() {
       return (
-        <form>
-          <div className="group">
-            <input type="text" required value={this.state.value} onChange={this.handleChange}></input>
-            <span className="highlight"></span>
-            <span className="bar"></span>
-            <label>Search</label>
-            <button type="submit" className="btn" onClick={this.submit_button}><span>Submit</span></button>
-          </div>
-        </form>
+        <Search ingredientsInput={this.ingredientsInput} submit_button={this.submit_button} value={this.state.value}/>
       )
   }
 };
 
-class About extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>About</h1>
-                <p>This is the about page</p>
-            </div>
-        )
-    }
-}
 
 export default App;

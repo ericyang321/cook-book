@@ -1,6 +1,13 @@
-let express = require('express');
-let app = express();
+const express = require('express');
+const app = express();
 const http = require('http');
+const bodyParser = require('body-parser');
+
+
+//Setting up body parser to handle data in json or encoded url form
+//body-parser will parse any data sent in post requests to your server, and attach that data to the body property of the request (req.body)
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 
 
@@ -20,6 +27,10 @@ app.get('/recipes',(req,response) =>{
  
 
   });
+});
+
+app.post('/result',(req,res) =>{
+  console.log(req.body)
 })
 
 
