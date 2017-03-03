@@ -4,47 +4,9 @@ import About from './About';
 import Search from './Search';
 let axios = require('axios');
 
-class App extends React.Component {
-  constructor() {
-    super();
-    // this.state.page is what will be used to track which page to render
-    this.state = {
-      page: 'HOME'
-    }
-    // we need to bind our methods to the component itself
-    this.goToHome = this.goToHome.bind(this);
-    this.goToAbout = this.goToAbout.bind(this);
-  }
-  goToHome() {
-    this.setState({
-      page: 'HOME'
-    })
-  }
-  goToAbout() {
-    this.setState({
-      page: 'ABOUT'
-    })
-  }
-  render() {
-    let content
-    if (this.state.page === 'HOME') {
-      content = <Home />
-    } else if (this.state.page === 'ABOUT') {
-      content = <About />
-    }
-    return (
-      <div>
-        <div>
-          <button onClick={this.goToHome}>HOME</button>
-          <button onClick={this.goToAbout}>ABOUT</button>
-        </div>
-        {content}
-      </div>
-    )
-  }
-}
 
-class Home extends React.Component {
+
+class App extends React.Component {
   constructor() {
     super();
     this.state = {value: "",
