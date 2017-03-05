@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import App from './App';
 import About from './About'
 
-class Header extends React.Component {
+class Header extends Component {
   constructor() {
     super();
     // this.state.page is what will be used to track which page to render
@@ -32,9 +32,9 @@ class Header extends React.Component {
     }
     return (
       <div>
-        <div>
-          <button onClick={this.goToHome}>HOME</button>
-          <button onClick={this.goToAbout}>ABOUT</button>
+        <div id='nav-bar'>
+          <button className='nav-button' onClick={this.goToHome}>HOME</button>
+          <button className='nav-button' onClick={this.goToAbout}>ABOUT</button>
         </div>
         {content}
       </div>
