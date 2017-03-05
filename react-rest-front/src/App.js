@@ -32,7 +32,7 @@ class App extends Component {
     e.preventDefault();
     // destructuring out value and ingredients into variables
     const { value, ingredients } = this.state;
-    // begin loader rolling sequence
+    // future loader
     this.setState({fetching: true});
 
     let inputData = {value: value};
@@ -45,6 +45,7 @@ class App extends Component {
       axios.post('http://localhost:8000/result', __ingredients)
       .then(response => {
         self.setState({fetching: false});
+        self.setState({returnedRecipes: []});
         self.setState({returnedRecipes: response.data});
       })
     });
