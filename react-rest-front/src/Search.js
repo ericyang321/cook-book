@@ -2,19 +2,17 @@ import React, { Component } from 'react';
 
 class Search extends Component{
 	render() {
-      return (
-        <form>
-          <div className="group">
-            <input type="text" required value={this.props.value} onChange={this.props.ingredientsInput}></input>
-            <span className="highlight"></span>
-            <span className="bar"></span>
-            <label>Search</label>
-            <button type="submit" className="btn" onClick={this.props.submit_button}><span>Submit</span></button>
-          </div>
-        </form>
-      )
-  	}
-
+    const { value, ingredientsInput, submit_button } = this.props;
+    return (
+      <form className='form-container'>
+        <h1>Input Ingredients</h1>
+        <input className='form-input' type="text" required value={value} onChange={ingredientsInput} placeholder='eg: egg pasta brocolli' />
+        <button type="submit" className="btn form-submit" onClick={(event) => submit_button(event)}>
+          <span>Search</span>
+        </button>
+      </form>
+    )
+  }
 }
 
 export default Search;
