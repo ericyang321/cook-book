@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Search from './Search';
+import RecipeCard from './RecipeCard';
 let axios = require('axios');
 
 class App extends Component {
@@ -64,18 +65,9 @@ class App extends Component {
           </div>
         </section>
         <section className='form-container'>
-          { returnedRecipes.map(recipe =>{
-            return (
-              <div key={recipe.id}>
-                <p>Recipe Name: {recipe.recipeName}</p>
-                <p>Rating: {recipe.rating}</p>
-                <p>Ingredients: {recipe.ingredients}</p>
-                <p>From: {recipe.sourceName}</p>
-                <hr />
-              </div>
-            )
-          }) }
-        </section>
+             <RecipeCard returnedRecipes={this.state.returnedRecipes}/>
+            
+          </section>
       </div>
     )
   }

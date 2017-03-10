@@ -62,8 +62,8 @@ app.post('/result',(req, res) =>{
   .catch(err => {
     res.status(404).json(err);
   })
-})
-// These code snippets use an open-source library. http://unirest.io/nodejs
+});
+
 
 function getRecipeTitle(array) {
         for (let i = 0; i < array.length; i++) {
