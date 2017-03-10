@@ -3,11 +3,12 @@ const axios = require('axios');
 import React, { Component } from 'react';
 import Search from './Search';
 import RecipeCard from './RecipeCard';
+import ErrorCard from './ErrorCard';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {value: "", ingredients:[], "fetching": false, returnedRecipes: null};
+    this.state = {value: "", ingredients:[], "fetching": false, returnedRecipes: []};
     this.submit_button = this.submit_button.bind(this);
     this.ingredientsInput = this.ingredientsInput.bind(this);
   }
@@ -39,13 +40,16 @@ class App extends Component {
 
     const self = this;
     __ingredients.push(inputData);
-
     this.setState({ingredients:__ingredients}, () => {
-      self.setState({returnedRecipes: null});
+      self.setState({returnedRecipes: []});
       axios.post('http://localhost:8000/result', __ingredients)
       .then(response => {
+        if(response.data.length === 0){
+          self.setState({returnedRecipes: false})
+        } else {
+          self.setState({returnedRecipes: response.data})
+        }
         self.setState({fetching: false});
-        self.setState({returnedRecipes: response.data});
       })
     });
     // Reset ingredients state so that old list of ingredients aren't carried over with every request
@@ -65,6 +69,7 @@ class App extends Component {
           </div>
         </section>
         <section className='form-container'>
+          { !returnedRecipes && <ErrorCard /> }
           { returnedRecipes && returnedRecipes.map(recipe => {
             const { key, name, rating, ingredients, sourceName } = recipe;
           /* Here is where the RecipeCard components is inserted */
