@@ -13,16 +13,38 @@ class Header extends Component {
     this.goToHome = this.goToHome.bind(this);
     this.goToAbout = this.goToAbout.bind(this);
   }
-  goToHome() {
+
+  goToHome () {
     this.setState({
       page: 'HOME'
     })
   }
-  goToAbout() {
+
+  goToAbout () {
     this.setState({
       page: 'ABOUT'
     })
   }
+
+  componentDidMount () {
+    let lastKnownScrollPosition = 0;
+    let tick = false;
+    let opacity;
+    let blurredBackground;
+    window.addEventListener('scroll', function(e) {
+      lastKnownScrollPosition = window.scrollY;
+      opacity = (lastKnownScrollPosition / 180.0)
+      if (!tick) {
+        window.requestAnimationFrame(function() {
+          blurredBackground = document.getElementById('blurred-background');
+          blurredBackground.style.opacity = opacity;
+          tick = false;
+        });
+      }
+      tick = true;
+    });
+  }
+
   render() {
     let content
     if (this.state.page === 'HOME') {
