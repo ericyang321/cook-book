@@ -59,7 +59,9 @@ class App extends Component {
         <section className='search-container'>
           <Search ingredientsInput={this.ingredientsInput} submit_button={this.submit_button} value={this.state.value}/>
           <div className='form-container'>
-            { fetching && <p>Loading...</p> }
+            <div className='loading-container'>
+              { fetching && <div className='loading'></div> }
+            </div>
           </div>
         </section>
         <section className='form-container'>
@@ -78,6 +80,7 @@ class App extends Component {
             )
           }) }
         </section>
+        <div id='blurred-background'></div>
       </div>
     )
   }
