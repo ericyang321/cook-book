@@ -1,13 +1,13 @@
+const axios = require('axios');
+
 import React, { Component } from 'react';
-import './App.css';
 import Search from './Search';
 import RecipeCard from './RecipeCard';
-let axios = require('axios');
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {value: "", ingredients:[], "fetching": false, returnedRecipes: []};
+    this.state = {value: "", ingredients:[], "fetching": false, returnedRecipes: null};
     this.submit_button = this.submit_button.bind(this);
     this.ingredientsInput = this.ingredientsInput.bind(this);
   }
@@ -29,24 +29,22 @@ class App extends Component {
   }
 
   submit_button(e){
-    // preventDefault stops default browser redirection event on button click
     e.preventDefault();
-    // destructuring out value and ingredients into variables
     const { value, ingredients } = this.state;
-    // future loader
+
     this.setState({fetching: true});
 
     let inputData = {value: value};
     let __ingredients = ingredients;
-    // the self variable is create in order to retain this context for setState function
+
     const self = this;
     __ingredients.push(inputData);
 
     this.setState({ingredients:__ingredients}, () => {
+      self.setState({returnedRecipes: null});
       axios.post('http://localhost:8000/result', __ingredients)
       .then(response => {
         self.setState({fetching: false});
-        self.setState({returnedRecipes: []});
         self.setState({returnedRecipes: response.data});
       })
     });
@@ -65,9 +63,21 @@ class App extends Component {
           </div>
         </section>
         <section className='form-container'>
-             <RecipeCard returnedRecipes={this.state.returnedRecipes}/>
-            
-          </section>
+
+          { returnedRecipes && returnedRecipes.map(recipe => {
+            const { key, name, rating, ingredients, sourceName } = recipe;
+          /* Here is where the RecipeCard components is inserted */
+            return (
+              <RecipeCard
+                key={key}
+                name={name}
+                rating={rating}
+                ingredients={ingredients}
+                sourceName={sourceName}
+              />
+            )
+          }) }
+        </section>
       </div>
     )
   }
