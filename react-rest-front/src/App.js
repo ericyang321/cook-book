@@ -61,14 +61,12 @@ class App extends Component {
     return (
       <div>
         <section className='search-container'>
-          <Search ingredientsInput={this.ingredientsInput} submit_button={this.submit_button} value={this.state.value}/>
-          <div className='form-container'>
-            <div className='loading-container'>
-              { fetching && <div className='loading'></div> }
-            </div>
+          <Search ingredientsInput={this.ingredientsInput} submit_button={this.submit_button} value={this.state.value} fetching={fetching}/>
+          <div className='content-container'>
+
           </div>
         </section>
-        <section className='form-container'>
+        <section className='content-container'>
           { !returnedRecipes && <ErrorCard /> }
           { returnedRecipes && returnedRecipes.map(recipe => {
             const { key, name, rating, ingredients, sourceName } = recipe;
@@ -85,6 +83,7 @@ class App extends Component {
           }) }
         </section>
         <div id='blurred-background'></div>
+        <div id='acknowledgements'>Recipe search powered by <a href='http://www.yummly.co/recipes'>Yummley</a></div>
       </div>
     )
   }

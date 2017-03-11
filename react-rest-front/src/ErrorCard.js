@@ -2,7 +2,10 @@ import React from 'react';
 
 const ErrorCard = () => {
   return(
-    <p className='emphasis-text'>Can't find shit yo. Are you sure it's food you just searched or did you just type jibberish</p>
+    <div className='error-container'>
+      <p className='error-text'>We couldn't find any recipes.</p>
+      <p className='error-text'>Are any of the ingredients misspelled?</p>
+    </div>
   )
 }
 

@@ -5,11 +5,7 @@ import About from './About'
 class Header extends Component {
   constructor() {
     super();
-    // this.state.page is what will be used to track which page to render
-    this.state = {
-      page: 'HOME'
-    }
-    // we need to bind our methods to the component itself
+    this.state = {page: 'HOME'};
     this.goToHome = this.goToHome.bind(this);
     this.goToAbout = this.goToAbout.bind(this);
   }
@@ -26,17 +22,20 @@ class Header extends Component {
     })
   }
 
+  throttle () {
+    // Fires every 250ms instead.
+  }
+
   componentDidMount () {
     let lastKnownScrollPosition = 0;
     let tick = false;
     let opacity;
-    let blurredBackground;
+    let blurredBackground = document.getElementById('blurred-background');;
     window.addEventListener('scroll', function(e) {
       lastKnownScrollPosition = window.scrollY;
-      opacity = (lastKnownScrollPosition / 180.0)
+      opacity = (lastKnownScrollPosition / 100.0)
       if (!tick) {
         window.requestAnimationFrame(function() {
-          blurredBackground = document.getElementById('blurred-background');
           blurredBackground.style.opacity = opacity;
           tick = false;
         });
