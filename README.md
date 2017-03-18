@@ -22,8 +22,10 @@ $ npm start
 
 ## Built By
 [Jonathan](https://github.com/jon825) from Toronto
+
 [Eric](https://github.com/ericyang321) from San Francisco
 
 ## Credits
 Ingredient search is powered by [Yummley API](https://developer.yummly.com/)
+
 Background image by [Death to the Stock Photo](http://deathtothestockphoto.com/)
