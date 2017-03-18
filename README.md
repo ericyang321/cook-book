@@ -1,15 +1,19 @@
-#CookBook :meat_on_bone: :stew: :egg:
+# CookBook :egg: :tomato: :corn: => :meat_on_bone: :stew: 
 
-## A Work in Progress. Website coming soon.
+**A Work in Progress. Website coming soon.**
 Ever come home to find your fridge filled with random leftover ingredients, and you have no clue what meal you can make with a bag of hot dogs, parsley, and a half stick of butter?
+
 ![Cookbook](./images/homepage.png)
 
 CookBook is here to help you find any recipes available with your current ingredients. Just input some ingredients available in your fridge, and CookBook will find you the closest human edible recipe based on said ingredients.
 
 ## Develop
 CookBook is developed with create-react-app.
-Just run `$ npm install` and then  `$ npm start` after cloning the repo and you're all set.
-
+```
+$ npm install
+$ npm run build
+$ npm start
+```
 ## Built with
 * React
 * Webpack
