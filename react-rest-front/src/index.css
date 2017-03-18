@@ -12,7 +12,11 @@ body {
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: #69F0AE;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 #blurred-background {
@@ -36,11 +40,26 @@ html {
   width: 100%
 }
 
-.title {
+#home-title {
   color: white;
   font-weight: 500;
   margin: 1.3em 0;
   font-size: 2.7em;
+}
+
+.title {
+  color: white;
+  font-weight: 500;
+  margin: 1em 0;
+  font-size: 2em;
+}
+
+.description {
+  color: white;
+  font-weight: 300;
+  margin: 1em 0;
+  font-size: 1.1em;
+  line-height: 1.6;
 }
 
 .emphasis-text {
@@ -188,7 +207,7 @@ button, input, select, textarea {
 }
 
 .form-input:focus {
-  border-color: white;
+  border-color: #69F0AE;
 }
 
 .recipe-cards {
@@ -234,7 +253,7 @@ button, input, select, textarea {
   font-size: 10px;
   text-align: right;
   padding: 0.5em 0.5em;
-  color: rgba(227, 227, 227, 0.2);
+  color: rgba(227, 227, 227, 0.7);
 }
 
 .about {

@@ -83,7 +83,9 @@ class App extends Component {
           }) }
         </section>
         <div id='blurred-background'></div>
-        <div id='acknowledgements'>Recipe search powered by <a href='http://www.yummly.co/recipes'>Yummley</a></div>
+        <div id='acknowledgements'>
+          Recipe search powered by <a href='http://www.yummly.co/recipes'>Yummley</a>
+        </div>
       </div>
     )
   }

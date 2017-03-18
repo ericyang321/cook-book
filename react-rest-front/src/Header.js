@@ -22,26 +22,25 @@ class Header extends Component {
     })
   }
 
-  throttle () {
-    // Fires every 250ms instead.
+  blurOverlay (lastKnownScrollPosition) {
+    var blurOverlayOpacity = (lastKnownScrollPosition / 300.0)
+    document.getElementById('blurred-background').style.opacity = blurOverlayOpacity;
   }
 
   componentDidMount () {
     let lastKnownScrollPosition = 0;
     let tick = false;
-    let opacity;
-    let blurredBackground = document.getElementById('blurred-background');;
-    window.addEventListener('scroll', function(e) {
+    window.addEventListener('scroll', (e) => {
+      // decouple the scroll event from the background update, semi-throttle background blurring actions
       lastKnownScrollPosition = window.scrollY;
-      opacity = (lastKnownScrollPosition / 100.0)
       if (!tick) {
-        window.requestAnimationFrame(function() {
-          blurredBackground.style.opacity = opacity;
+        window.requestAnimationFrame(() => {
+          this.blurOverlay(lastKnownScrollPosition);
           tick = false;
         });
       }
-      tick = true;
-    });
+    tick = true;
+    })
   }
 
   render() {

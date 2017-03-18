@@ -15,9 +15,7 @@ app.use(function(req, res, next) {
 
 app.post('/result',(req, res) =>{
   let allowedIngredientString = "";
-
   const ingredientsArray = req.body[0].value.split(" ");
-
   ingredientsArray.forEach(ingredient => {
     allowedIngredientString += "&allowedIngredient[]=" + ingredient
   })
@@ -29,7 +27,7 @@ app.post('/result',(req, res) =>{
       let { recipeName, rating, ingredients, id, sourceDisplayName } = match;
       results.push({
         key: id,
-        name: recipeName,
+        name: recipeName.toLowerCase(),
         rating,
         ingredients,
         sourceName: sourceDisplayName
