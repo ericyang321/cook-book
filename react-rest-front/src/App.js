@@ -1,6 +1,5 @@
-const axios = require('axios');
-
 import React, { Component } from 'react';
+import axios from 'axios';
 import Search from './Search';
 import RecipeCard from './RecipeCard';
 import ErrorCard from './ErrorCard';
@@ -25,16 +24,14 @@ class App extends Component {
     })
   }
 
-  ingredientsInput(event){
+  ingredientsInput(event) {
     this.setState({value: event.target.value});
   }
 
   submit_button(e){
     e.preventDefault();
     const { value, ingredients } = this.state;
-
     this.setState({fetching: true});
-
     let inputData = {value: value};
     let __ingredients = ingredients;
 
@@ -68,6 +65,7 @@ class App extends Component {
         </section>
         <section className='content-container'>
           { !returnedRecipes && <ErrorCard /> }
+          <div className='flexed-result-container'>
           { returnedRecipes && returnedRecipes.map(recipe => {
             const { key, name, rating, ingredients, sourceName } = recipe;
           /* Here is where the RecipeCard components is inserted */
@@ -81,6 +79,7 @@ class App extends Component {
               />
             )
           }) }
+          </div>
         </section>
         <div id='blurred-background'></div>
         <div id='acknowledgements'>

@@ -31,7 +31,6 @@ class Header extends Component {
     let lastKnownScrollPosition = 0;
     let tick = false;
     window.addEventListener('scroll', (e) => {
-      // decouple the scroll event from the background update, semi-throttle background blurring actions
       lastKnownScrollPosition = window.scrollY;
       if (!tick) {
         window.requestAnimationFrame(() => {
