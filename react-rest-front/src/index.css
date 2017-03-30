@@ -12,7 +12,8 @@ body {
 
 a {
   text-decoration: none;
-  color: #69F0AE;
+  font-weight: 500;
+  color: #F54882;
 }
 
 a:hover {
@@ -29,7 +30,7 @@ a:hover {
   height: 100%;
   opacity: 0;
   z-index: -1;
-  background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8) ),url("../public/background-blurred.jpg") no-repeat center center fixed;
+  background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -96,8 +97,8 @@ html {
 .error-text {
   text-align: center;
   color: #eb5a46;
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 25px;
+  font-weight: 400;
 }
 
 .error-container {
@@ -149,12 +150,25 @@ button, input, select, textarea {
 .content-container {
   display: block;
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 800px;
   text-align: center;
   -moz-transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
   -o-transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
   -webkit-transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.flexed-result-container {
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  justify-content: flex-end;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  align-items: center;
+  -webkit-align-items: center;
 }
 
 .search-container {
@@ -207,14 +221,38 @@ button, input, select, textarea {
 }
 
 .form-input:focus {
-  border-color: #69F0AE;
+  border-color: white;
 }
 
 .recipe-cards {
-  margin: 1em;
+  display: inline-block;
+  margin: 0.6em;
   padding: 1em;
-  border: 1px solid white;
+  border: 1px solid #cdd2d4;
   color: white;
+  text-align: left;
+  width: 300px;
+  -moz-transition: background-color 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -o-transition: background-color 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition: background-color 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: background-color 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.recipe-cards:hover {
+  background-color: #AD1457;
+}
+
+.recipe-cards .title {
+  font-weight: 600;
+  font-size: 2em;
+  margin: 0.3em 0;
+  color: #69F0AE;
+}
+
+.recipe-cards .ratings {
+  font-weight: 500;
+  font-size: 1em;
+  color: #FFEB3B;
 }
 
 .loading {
@@ -258,4 +296,22 @@ button, input, select, textarea {
 
 .about {
   text-align: left;
+  padding: 1em;
+}
+
+.ingredients {
+  line-height: 1.4;
+  font-size: 1em;
+}
+
+.separator {
+  border-top: 5px solid #70BCED;
+  padding: 0;
+  margin: 0.7em 0;
+  width: 5%;
+}
+
+.ingred {
+  font-size: 1.2em;
+
 }
