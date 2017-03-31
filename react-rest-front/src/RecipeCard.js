@@ -15,8 +15,12 @@ const RecipeCard = ({name, rating, ingredients, sourceName}) => {
         })}
         <p className='separator'></p>
       </div>
-      <a href={"https://www.google.com/search?q="+ googleUrlParse(sourceName) + " " + googleUrlParse(name)} className='google-search'>
-        Google The Steps For Me
+      <a
+        href={"https://www.google.com/search?q="+ googleUrlParse(sourceName) + " " + googleUrlParse(name)}
+        className='google-search'
+        target="_blank"
+      >
+        Click Me To Google The Steps
       </a>
     </div>
   )

@@ -11,13 +11,9 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
   font-weight: 500;
   color: #F54882;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 #blurred-background {
@@ -80,10 +76,10 @@ html {
   left: 0;
   width: 0%;
   border-bottom: 1px solid #69F0AE;
-  -moz-transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
-  -o-transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
-  -webkit-transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -moz-transition: width 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -o-transition: width 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition: width 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: width 1s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .emphasis-text:hover:after {
@@ -96,9 +92,9 @@ html {
 
 .error-text {
   text-align: center;
-  color: #eb5a46;
+  color: #F54882;
   font-size: 25px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .error-container {
@@ -167,8 +163,8 @@ button, input, select, textarea {
   justify-content: flex-end;
   -webkit-justify-content: center;
   -moz-justify-content: center;
-  align-items: center;
-  -webkit-align-items: center;
+  align-items: flex-start;
+  -webkit-align-items: flex-start;
 }
 
 .search-container {
@@ -239,7 +235,7 @@ button, input, select, textarea {
 }
 
 .recipe-cards:hover {
-  background-color: #AD1457;
+  background-color: #70BCED;
 }
 
 .recipe-cards .title {
@@ -305,7 +301,7 @@ button, input, select, textarea {
 }
 
 .separator {
-  border-top: 5px solid #70BCED;
+  border-top: 5px solid #F54882;
   padding: 0;
   margin: 0.7em 0;
   width: 5%;
@@ -313,5 +309,4 @@ button, input, select, textarea {
 
 .ingred {
   font-size: 1.2em;
-
 }
