@@ -1,6 +1,8 @@
 # CookBook :egg: :tomato: :corn: => :meat_on_bone: :stew: 
 
-**A Work in Progress. Website coming soon.**
+#### WE'RE LIVE!! [cook_book.surge.sh](http://cook_book.surge.sh/)
+
+
 Ever come home to find your fridge filled with random leftover ingredients, and you have no clue what meal you can make with a bag of hot dogs, parsley, and a half stick of butter?
 
 ![Cookbook](./images/homepage.png)
