@@ -1,6 +1,6 @@
 # CookBook :egg: :tomato: :corn: => :meat_on_bone: :stew: 
 
-**WE'RE LIVE!! [cook_book.surge.sh](cook_book.surge.sh)**
+#### WE'RE LIVE!! [cook_book.surge.sh](http://cook_book.surge.sh/)
 
 
 Ever come home to find your fridge filled with random leftover ingredients, and you have no clue what meal you can make with a bag of hot dogs, parsley, and a half stick of butter?
