@@ -13,15 +13,11 @@ class App extends Component {
   }
 
   goToHome() {
-    this.setState({
-      page: 'HOME'
-    })
+    this.setState({page: 'HOME'})
   }
 
   goToAbout() {
-    this.setState({
-      page: 'ABOUT'
-    })
+    this.setState({page: 'ABOUT'})
   }
 
   ingredientsInput(event) {
@@ -30,6 +26,7 @@ class App extends Component {
 
   submit_button(e){
     e.preventDefault();
+
     this.setState({fetching: true});
     const { value, ingredients } = this.state;
     let inputData = {value: value.toLowerCase()};
@@ -40,14 +37,13 @@ class App extends Component {
       this.setState({returnedRecipes: []});
 
       /**
-       *Accepts ingredients user inserted ingredients, and performs *fetch request to Yummley API.
+       *Accepts ingredients user typed through search bar, and performs fetch request to Yummley API.
        */
       FetchYummley(_ingredients)
       .then(response => {
-        console.log(response);
         if(response.length === 0){
           this.setState({returnedRecipes: false})
-        } else {
+        }else{
           this.setState({returnedRecipes: response})
         }
         this.setState({fetching: false});
@@ -56,13 +52,16 @@ class App extends Component {
 
     /**
      *Reset ingredients state so that old list of ingredients aren't
-     *carried over with every request
+     *carried over with subsequent fetch requests
      */
     this.setState({ingredients: []});
   }
 
   render() {
-    const { fetching, returnedRecipes } = this.state;
+    const { fetching,
+            returnedRecipes,
+            value,
+          } = this.state;
     return (
       <div>
 
@@ -70,7 +69,7 @@ class App extends Component {
           <Search
             ingredientsInput={this.ingredientsInput}
             submit_button={this.submit_button}
-            value={this.state.value}
+            value={value}
             fetching={fetching}
           />
           <div className='content-container'></div>
@@ -81,22 +80,19 @@ class App extends Component {
           <div className='flexed-result-container'>
             {returnedRecipes && returnedRecipes.map(recipe => {
               const { key, name, rating, ingredients, sourceName } = recipe;
-
-            return (
-              <RecipeCard
-                key={key}
-                name={name}
-                rating={rating}
-                ingredients={ingredients}
-                sourceName={sourceName}
-              />
-            )
-          })}
+              return (
+                <RecipeCard
+                  key={key}
+                  name={name}
+                  rating={rating}
+                  ingredients={ingredients}
+                  sourceName={sourceName}
+                />
+              )
+            })}
           </div>
         </section>
-
         <div id='blurred-background'></div>
-
         <div id='acknowledgements'>
           Recipe search powered by <a href='http://www.yummly.co/recipes'>Yummley</a>
         </div>

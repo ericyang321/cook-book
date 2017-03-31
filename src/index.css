@@ -185,7 +185,7 @@ button, input, select, textarea {
   display: block;
   position: relative;
   cursor: pointer;
-  padding: 0.6em 1em;
+  padding: 0.6em;
   margin: 0 auto;
   margin-top: 2em;
   text-decoration: none;
@@ -196,6 +196,10 @@ button, input, select, textarea {
   -o-transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
   -webkit-transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
   transition: all 1s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.form-submit .emphasis-text {
+  font-size: 1.3em;
 }
 
 .form-input {
