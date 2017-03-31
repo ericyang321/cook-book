@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Search from './Search';
 import RecipeCard from './RecipeCard';
 import ErrorCard from './ErrorCard';
+import FetchYummley from './FetchYummley';
 
 class App extends Component {
   constructor() {
@@ -30,45 +30,59 @@ class App extends Component {
 
   submit_button(e){
     e.preventDefault();
-    const { value, ingredients } = this.state;
     this.setState({fetching: true});
+    const { value, ingredients } = this.state;
     let inputData = {value: value};
-    let __ingredients = ingredients;
+    let _ingredients = ingredients;
 
-    const self = this;
-    __ingredients.push(inputData);
-    this.setState({ingredients:__ingredients}, () => {
-      self.setState({returnedRecipes: []});
-      axios.post('http://localhost:8000/result', __ingredients)
+    _ingredients.push(inputData);
+
+    this.setState({ingredients:_ingredients}, () => {
+      this.setState({returnedRecipes: []});
+
+      /**
+       *Accepts ingredients user inserted ingredients, and performs *fetch request to Yummley API.
+       */
+      FetchYummley(_ingredients)
       .then(response => {
-        if(response.data.length === 0){
-          self.setState({returnedRecipes: false})
+        console.log(response);
+        if(response.length === 0){
+          this.setState({returnedRecipes: false})
         } else {
-          self.setState({returnedRecipes: response.data})
+          this.setState({returnedRecipes: response})
         }
-        self.setState({fetching: false});
+        this.setState({fetching: false});
       })
     });
-    // Reset ingredients state so that old list of ingredients aren't carried over with every request
-    this.setState({ingredients: []})
+
+    /**
+     *Reset ingredients state so that old list of ingredients aren't
+     *carried over with every request
+     */
+    this.setState({ingredients: []});
   }
 
   render() {
     const { fetching, returnedRecipes } = this.state;
     return (
       <div>
-        <section className='search-container'>
-          <Search ingredientsInput={this.ingredientsInput} submit_button={this.submit_button} value={this.state.value} fetching={fetching}/>
-          <div className='content-container'>
 
-          </div>
+        <section className='search-container'>
+          <Search
+            ingredientsInput={this.ingredientsInput}
+            submit_button={this.submit_button}
+            value={this.state.value}
+            fetching={fetching}
+          />
+          <div className='content-container'></div>
         </section>
+
         <section className='content-container'>
           { !returnedRecipes && <ErrorCard /> }
           <div className='flexed-result-container'>
-          { returnedRecipes && returnedRecipes.map(recipe => {
-            const { key, name, rating, ingredients, sourceName } = recipe;
-          /* Here is where the RecipeCard components is inserted */
+            {returnedRecipes && returnedRecipes.map(recipe => {
+              const { key, name, rating, ingredients, sourceName } = recipe;
+
             return (
               <RecipeCard
                 key={key}
@@ -78,10 +92,12 @@ class App extends Component {
                 sourceName={sourceName}
               />
             )
-          }) }
+          })}
           </div>
         </section>
+
         <div id='blurred-background'></div>
+
         <div id='acknowledgements'>
           Recipe search powered by <a href='http://www.yummly.co/recipes'>Yummley</a>
         </div>
