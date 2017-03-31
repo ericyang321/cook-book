@@ -34,7 +34,6 @@ class App extends Component {
     const { value, ingredients } = this.state;
     let inputData = {value: value.toLowerCase()};
     let _ingredients = ingredients;
-    console.log(inputData)
     _ingredients.push(inputData);
 
     this.setState({ingredients:_ingredients}, () => {
