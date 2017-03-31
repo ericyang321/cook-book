@@ -8,7 +8,6 @@ const About = () => {
       <p className='description'> CookBook is here to help you find any recipes available with your current ingredients. </p>
       <h1 className='title'>Who's the wholesome cook in the background?</h1>
       <p className='description'>We found him on <a href=''>Death to the Stock Photo</a>. They send free high quality stock images to their subscribers every month. Check them out, they take some of the best stock photos we've ever seen. </p>
-      <div id='acknowledgements'>Recipe search powered by <a href='http://www.yummly.co/recipes'>Yummley</a></div>
     </div>
   )
 }
