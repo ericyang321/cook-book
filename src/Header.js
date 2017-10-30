@@ -5,11 +5,7 @@ import About from './About'
 class Header extends Component {
   constructor() {
     super();
-    // this.state.page is what will be used to track which page to render
-    this.state = {
-      page: 'HOME'
-    }
-    // we need to bind our methods to the component itself
+    this.state = {page: 'HOME'};
     this.goToHome = this.goToHome.bind(this);
     this.goToAbout = this.goToAbout.bind(this);
   }
@@ -26,23 +22,24 @@ class Header extends Component {
     })
   }
 
+  blurOverlay (lastKnownScrollPosition) {
+    var blurOverlayOpacity = (lastKnownScrollPosition / 300.0)
+    document.getElementById('blurred-background').style.opacity = blurOverlayOpacity;
+  }
+
   componentDidMount () {
     let lastKnownScrollPosition = 0;
     let tick = false;
-    let opacity;
-    let blurredBackground;
-    window.addEventListener('scroll', function(e) {
+    window.addEventListener('scroll', (e) => {
       lastKnownScrollPosition = window.scrollY;
-      opacity = (lastKnownScrollPosition / 180.0)
       if (!tick) {
-        window.requestAnimationFrame(function() {
-          blurredBackground = document.getElementById('blurred-background');
-          blurredBackground.style.opacity = opacity;
+        window.requestAnimationFrame(() => {
+          this.blurOverlay(lastKnownScrollPosition);
           tick = false;
         });
       }
-      tick = true;
-    });
+    tick = true;
+    })
   }
 
   render() {
